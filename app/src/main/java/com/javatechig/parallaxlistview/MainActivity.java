@@ -29,7 +29,7 @@ public class MainActivity extends ActionBarActivity implements AbsListView.OnScr
         listView = (ListView) findViewById(R.id.list);
 
         for (int i = 0; i < MAX_ROWS; i++) {
-            modelList.add("List Item" + i);
+            modelList.add("List item " + i);
         }
 
         adapter = new ArrayAdapter(this, R.layout.list_row, modelList);
@@ -45,13 +45,14 @@ public class MainActivity extends ActionBarActivity implements AbsListView.OnScr
         listView.setOnScrollListener(this);
     }
 
+
     @Override
-    public void onScrollStateChanged(AbsListView absListView, int i) {
+    public void onScrollStateChanged(AbsListView view, int scrollState) {
 
     }
 
     @Override
-    public void onScroll(AbsListView absListView, int i, int i2, int i3) {
+    public void onScroll(AbsListView view, int firstVisibleItem, int visibleItemCount, int totalItemCount) {
         Rect rect = new Rect();
         backgroundImage.getLocalVisibleRect(rect);
         if (lastTopValue != rect.top) {
@@ -59,4 +60,5 @@ public class MainActivity extends ActionBarActivity implements AbsListView.OnScr
             backgroundImage.setY((float) (rect.top / 2.0));
         }
     }
+
 }
